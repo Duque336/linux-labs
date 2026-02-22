@@ -1,8 +1,0 @@
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-
-# OS noise
-.DS_Store
