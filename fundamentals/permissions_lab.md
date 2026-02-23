@@ -1,10 +1,10 @@
-Linux Permissions Deep Dive Lab
+#Linux Permissions Deep Dive Lab
 
 Author: duk33
 Environment: Ubuntu / Kali Linux
 Objective: Analyze how Linux permission modes (700, 750, 777) affect access control across multiple users.
 
-1. Lab Overview
+#1. Lab Overview
 
 This lab evaluates Linux Discretionary Access Control (DAC) using standard permission bits.
 
@@ -22,7 +22,7 @@ Recording observed behavior
 
 The goal is to understand how ownership, group membership, and permission modes determine access behavior.
 
-2. User Creation
+#2. User Creation
 Commands Executed
 sudo adduser testuser1
 sudo adduser testuser2
@@ -55,7 +55,7 @@ Default shell (/bin/bash)
 
 Home directory (/home/testuserX)
 
-3. Directory Creation
+#3. Directory Creation
 Command
 mkdir labdir
 ls -ld labdir
@@ -71,7 +71,7 @@ umask
 
 Umask defines which permission bits are removed when new files or directories are created.
 
-4. Permission Testing – Mode 700
+#4. Permission Testing – Mode 700
 Command
 chmod 700 labdir
 ls -ld labdir
@@ -106,7 +106,7 @@ Security Implication
 700 enforces strict isolation.
 Appropriate for private or sensitive directories.
 
-5. Permission Testing – Mode 750 (Without Group Configuration)
+#5. Permission Testing – Mode 750 (Without Group Configuration)
 Command
 chmod 750 labdir
 ls -ld labdir
@@ -136,7 +136,7 @@ Conclusion
 
 750 alone does not enable collaboration unless group membership is configured properly.
 
-6. Controlled Group-Based Access Testing
+#6. Controlled Group-Based Access Testing
 Create Shared Group
 sudo groupadd labgroup
 Add Users to Group
@@ -165,7 +165,7 @@ Group-based permissions enable controlled collaboration.
 
 This supports the Principle of Least Privilege.
 
-7. Permission Testing – Mode 777
+#7. Permission Testing – Mode 777
 Command
 chmod 777 labdir
 ls -ld labdir
@@ -202,14 +202,14 @@ Potential privilege escalation
 
 This permission mode should be avoided in production environments.
 
-8. Summary of Results
+#8. Summary of Results
 
 Permission Mode | Owner | Group | Others | Risk Level
 700 | Full | None | None | Low
 750 | Full | Limited | None | Moderate (if group controlled)
 777 | Full | Full | Full | High
 
-9. Key Technical Takeaways
+#9. Key Technical Takeaways
 
 Linux evaluates permissions in this order:
 
